@@ -1,16 +1,20 @@
-/*
- * phone-security-device.c
- *
- * Created: 15.12.2020 13:33:54
- * Author : user
- */ 
+//2020.12.23
 
-#include <avr/io.h>
+#include "setupCPU.h"
+#include "lib_74hc595.h"
+
 
 
 int main(void)
 {
-    /* Replace with your application code */
+	
+setupCPU();
+activationPort();
+
+test74hc595();
+
+
+  
     while (1) 
     {
     }
