@@ -7,7 +7,7 @@
 
 #include "lib_74hc595.h"
 
-void activationPort () //Функция инициализации портов управления сдвиговым регистром 74ch595
+void portsActivation () //Функция инициализации портов управления сдвиговым регистром 74ch595
 {
 	PORTD &= ~(1<<PD7)|(1<<PD6)|(1<<PD5);
 	DDRD |= (1<<PD7)|(1<<PD6)|(1<<PD5);
@@ -28,6 +28,19 @@ void test74hc595 () // функция для тестирвания работы
 		SHCP_DOWN;
 		if (DS_CHECK_UP) DS_DOWN;
 		
+	}
+	STCP_UP;
+	STCP_DOWN;
+}
+
+void registerPortActivation (char number) //Функция активирует отдельный порт сдвигового регистра 74ch595
+{
+	DS_UP;
+	for (int i = 0; i < number; i++)
+	{
+		SHCP_UP;
+		SHCP_DOWN;
+		if (DS_CHECK_UP) DS_DOWN;
 	}
 	STCP_UP;
 	STCP_DOWN;
